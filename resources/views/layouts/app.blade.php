@@ -32,7 +32,11 @@
         <!-- Sidebar (Desktop - Void Black) -->
         <aside class="app-sidebar">
             <div class="app-sidebar-logo">
-                <h3 style="margin:0; font-family:var(--font-heading);">Salvix</h3>
+                @if(file_exists(public_path('img/logo.png')))
+                    <img src="{{ asset('img/logo.png') }}" alt="Logo" style="max-height: 60px; margin-bottom: 10px;">
+                @else
+                    <h3 style="margin:0; font-family:var(--font-heading);">Salvix</h3>
+                @endif
                 <span class="label-editorial" style="display:block; margin-top:5px; color:#888;">Restaurant System</span>
             </div>
             

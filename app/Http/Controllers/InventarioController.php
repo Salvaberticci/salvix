@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ingrediente;
+use App\Models\MovimientoInventario;
 
 class InventarioController extends Controller
 {
     public function index()
     {
-        $ingredientes = \App\Models\Ingrediente::orderBy('nombre')->get();
-        $movimientos = \App\Models\MovimientoInventario::with('ingrediente', 'user')
+        $ingredientes = Ingrediente::orderBy('nombre')->get();
+        $movimientos = MovimientoInventario::with('ingrediente', 'user')
                             ->orderBy('created_at', 'desc')
                             ->take(50)->get();
                             
@@ -25,7 +27,7 @@ class InventarioController extends Controller
             'costo_usd' => 'numeric|min:0'
         ]);
 
-        \App\Models\Ingrediente::create($data);
+        Ingrediente::create($data);
         return back()->with('success', 'Ingrediente agregado al inventario.');
     }
     
@@ -38,7 +40,7 @@ class InventarioController extends Controller
             'motivo' => 'nullable|string'
         ]);
         
-        $ingrediente = \App\Models\Ingrediente::findOrFail($id);
+        $ingrediente = Ingrediente::findOrFail($id);
         
         // Update stock
         if($request->tipo == 'entrada') {
@@ -49,7 +51,7 @@ class InventarioController extends Controller
         $ingrediente->save();
         
         // Register movement
-        \App\Models\MovimientoInventario::create([
+        MovimientoInventario::create([
             'ingrediente_id' => $ingrediente->id,
             'tipo' => $request->tipo,
             'cantidad' => $request->cantidad,

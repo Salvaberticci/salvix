@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Categoria;
 
 class CategoriaController extends Controller
 {
     public function index()
     {
-        $categorias = \App\Models\Categoria::orderBy('orden')->get();
+        $categorias = Categoria::orderBy('orden')->get();
         return view('categorias.index', compact('categorias'));
     }
 
@@ -27,16 +28,16 @@ class CategoriaController extends Controller
         ]);
 
         $data['activa'] = $request->has('activa');
-        \App\Models\Categoria::create($data);
+        Categoria::create($data);
         return redirect()->route('categorias.index')->with('success', 'Categoría creada.');
     }
 
-    public function edit(\App\Models\Categoria $categoria)
+    public function edit(Categoria $categoria)
     {
         return view('categorias.edit', compact('categoria'));
     }
 
-    public function update(Request $request, \App\Models\Categoria $categoria)
+    public function update(Request $request, Categoria $categoria)
     {
         $data = $request->validate([
             'nombre' => 'required|string|max:255',
@@ -49,7 +50,7 @@ class CategoriaController extends Controller
         return redirect()->route('categorias.index')->with('success', 'Categoría actualizada.');
     }
 
-    public function destroy(\App\Models\Categoria $categoria)
+    public function destroy(Categoria $categoria)
     {
         $categoria->delete();
         return redirect()->route('categorias.index')->with('success', 'Categoría eliminada.');

@@ -164,10 +164,10 @@ function cartSystem() {
         },
 
         checkout() {
-            // For later phase 4 Integration
+            // Redirigir al Wizard de Pagos
             window.notify("Redirigiendo a pagos...", "success");
             setTimeout(() => {
-                window.location.href = '#pagar'; // To be implemented in Phase 4
+                window.location.href = "{{ route('pagos.wizard') }}";
             }, 1000);
         }
     }

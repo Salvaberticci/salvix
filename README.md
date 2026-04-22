@@ -28,11 +28,19 @@ Integración nativa con **Google Gemini / OpenAI / Groq**. El sistema utiliza **
 - **Sincronización BCV Reactiva**: Conexión automática con *DolarAPI* para actualizar la tasa oficial cada 60 minutos sin recargar la página.
 - **Cálculos Duales**: Conversión instantánea de precios USD a Bs en el catálogo y tickets de pago.
 
-### 💳 UX de Pago (Payment Wizard)
-Interfaz optimizada para dispositivos móviles que guía al cliente a través de múltiples métodos de pago (Pago Móvil, Zelle, Transferencia, Efectivo) con carga de comprobantes y validación administrativa.
+### 📦 Módulo de Delivery & Logística
+- **Captura Inteligente**: Formulario dinámico para recopilar nombre, teléfono y dirección exacta del cliente.
+- **Tipo de Entrega Dual**: Soporte para *Delivery a Domicilio* y *Retiro en Tienda*.
+- **Trazabilidad de Pedidos**: Los datos de contacto viajan íntegramente desde el catálogo hasta el panel de cocina.
 
-### 📊 Dashboard de Alto Rendimiento
-Control total de pedidos en tiempo real con estados de flujo: *Pendiente -> Cocina -> Entregado*.
+### 💳 Hub de Pagos & Verificación (Finalización Premium)
+- **Wizard de 4 Pasos**: Una experiencia de checkout cinematográfica (Resumen -> Entrega -> Método -> Reporte).
+- **Gestión de Bancos**: Panel administrativo para configurar cuentas de Pago Móvil, Zelle y Efectivo.
+- **Verificación Visual**: Los administradores pueden ver el capture de pantalla del pago y validar referencias antes de procesar el pedido.
+- **Flujo Automatizado**: Al confirmar un pago, el pedido se mueve instantáneamente a los monitores de cocina.
+
+### 📊 Dashboard de Gestión de Precisión
+Control total de métricas de ventas en USD y Bs, monitoreo de pedidos activos y gestión de inventario por ingredientes.
 
 ---
 

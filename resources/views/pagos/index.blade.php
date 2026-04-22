@@ -72,14 +72,20 @@
                     </div>
                 </template>
 
-                <div class="grid" style="font-size:0.9rem; margin-bottom:20px; background:#fafafa; padding:10px; border:1px solid #eee;">
-                    <div>
-                        <strong>Monto Reportado:</strong> Bs <span x-text="currentPago.monto_bs"></span><br>
-                        <strong>Referencia:</strong> <span x-text="currentPago.referencia || 'N/A'"></span>
-                    </div>
-                    <div>
-                        <strong>A Cuenta de:</strong><br>
-                        <span x-text="currentPago.cuenta_bancaria?.alias || 'Caja Efectivo'"></span>
+                <div style="font-size:0.9rem; margin-bottom:20px; background:var(--color-surface); padding:15px; border:1px solid var(--color-border); color:white;">
+                    <div class="grid">
+                        <div>
+                            <strong style="color:var(--color-gold);">📦 Entrega:</strong><br>
+                            <span x-text="currentPago.pedido?.cliente_nombre"></span><br>
+                            <span x-text="currentPago.pedido?.cliente_telefono"></span><br>
+                            <small x-text="currentPago.pedido?.tipo_entrega == 'delivery' ? 'Dirección: ' + currentPago.pedido?.direccion : 'Retiro en Tienda'"></small>
+                        </div>
+                        <div style="text-align:right;">
+                            <strong style="color:var(--color-gold);">💰 Pago:</strong><br>
+                            Bs <span x-text="currentPago.monto_bs"></span><br>
+                            Ref: <span x-text="currentPago.referencia || 'N/A'"></span><br>
+                            <small x-text="currentPago.cuenta_bancaria?.alias || 'Caja Efectivo'"></small>
+                        </div>
                     </div>
                 </div>
 

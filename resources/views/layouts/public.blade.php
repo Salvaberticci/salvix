@@ -27,32 +27,55 @@
         /* Public layout specific overrides for clean light mode */
         body {
             background-color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
         }
         .public-header {
-            background-color: var(--color-white);
-            border-bottom: 1px solid var(--color-border);
-            padding: 20px;
+            background-color: var(--color-black);
+            border-bottom: 2px solid var(--color-gold);
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1001;
+            color: white;
+        }
+        .app-content {
+            flex: 1;
         }
     </style>
 </head>
 <body>
 
     <header class="public-header">
-        <div>
-            <h1 style="margin:0; font-size:1.5rem;">Salvix</h1>
-            <span class="label-editorial" style="font-size:0.65rem;">Menú Digital</span>
+        <div style="display:flex; align-items:center; gap:15px;">
+            <!-- Botón Volver (Solo en el Wizard) -->
+            @if(Request::is('pagar'))
+                <a href="{{ route('catalogo.index') }}" class="btn-standard" style="padding: 5px 12px !important; border-color:rgba(255,255,255,0.2) !important; color:white; font-size: 0.7rem; text-decoration:none; display:flex; align-items:center; gap:5px;">
+                    <i class="ph ph-arrow-left"></i> Volver al Menú
+                </a>
+            @endif
+            
+            <div style="display:flex; align-items:center; gap:10px;">
+                @if(file_exists(public_path('img/logo.png')))
+                    <img src="{{ asset('img/logo.png') }}" alt="Logo" style="max-height: 40px; width:auto;">
+                @else
+                    <h1 style="margin:0; font-size:1.4rem; color:white; letter-spacing:-1px;">SALVIX</h1>
+                @endif
+                <span class="label-editorial" style="font-size:0.7rem; color:white; border-left: 1px solid rgba(255,255,255,0.3); padding-left:10px;">MENÚ DIGITAL</span>
+            </div>
         </div>
         <div>
-            <!-- Could be cart indicator or logic -->
-            <a href="{{ url('/pagar') }}" class="btn-critical" style="padding: 10px 15px !important; font-size: 0.8rem; text-decoration:none;">
-                <i class="ph ph-shopping-cart" style="font-size:1.2rem; margin-right:5px;"></i> Finalizar
-            </a>
+            @if(!Request::is('pagar'))
+                <a href="{{ url('/pagar') }}" class="btn-critical" style="padding: 10px 20px !important; font-size: 0.8rem; text-decoration:none; display:flex; align-items:center; gap:8px;">
+                    <i class="ph ph-shopping-bag" style="font-size:1.2rem;"></i> 
+                    <span>FINALIZAR</span>
+                </a>
+            @endif
         </div>
     </header>
 

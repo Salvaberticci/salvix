@@ -41,12 +41,45 @@
                     <span style="font-size:0.9rem; color:var(--color-muted);" x-text="'Bs ' + totalBs.toFixed(2)"></span>
                 </div>
             </div>
-            <button type="button" class="btn-critical" style="width:100%; margin-top:20px;" @click="step = 2">Continuar al Pago</button>
+            <button type="button" class="btn-critical" style="width:100%; margin-top:20px;" @click="step = 2">Continuar</button>
         </x-card>
 
-        <!-- Paso 2: Seleccionar Método de Pago -->
+        <!-- Paso 2: Datos de Entrega -->
         <x-card x-show="step === 2" class="gsap-step" style="display:none;">
-            <h3 style="margin-top:0; border-bottom:1px solid var(--color-border); padding-bottom:10px;">2. Selecciona cómo vas a pagar</h3>
+            <h3 style="margin-top:0; border-bottom:1px solid var(--color-border); padding-bottom:10px;">2. Datos de Entrega</h3>
+            
+            <div style="margin-top:15px;">
+                <label>Nombre Completo</label>
+                <input type="text" name="cliente_nombre" required placeholder="Ej: Juan Pérez">
+            </div>
+
+            <div style="margin-top:15px;">
+                <label>Teléfono de Contacto</label>
+                <input type="text" name="cliente_telefono" required placeholder="Ej: 0412 1234567">
+            </div>
+
+            <div style="margin-top:15px;">
+                <label>Tipo de Entrega</label>
+                <select name="tipo_entrega" x-model="tipoEntrega">
+                    <option value="delivery">A Domicilio (Delivery)</option>
+                    <option value="retiro">Retiro en Tienda</option>
+                </select>
+            </div>
+
+            <div style="margin-top:15px;" x-show="tipoEntrega === 'delivery'">
+                <label>Dirección Detallada</label>
+                <textarea name="direccion" placeholder="Calle, edificio, punto de referencia..."></textarea>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-top:20px;">
+                <button type="button" class="btn-standard" @click="step = 1">Volver</button>
+                <button type="button" class="btn-critical" @click="step = 3">Continuar al Pago</button>
+            </div>
+        </x-card>
+
+        <!-- Paso 3: Seleccionar Método de Pago -->
+        <x-card x-show="step === 3" class="gsap-step" style="display:none;">
+            <h3 style="margin-top:0; border-bottom:1px solid var(--color-border); padding-bottom:10px;">3. Selecciona cómo vas a pagar</h3>
             
             <div style="display:flex; flex-direction:column; gap:10px; margin-top:15px;">
                 @foreach($cuentas as $cuenta)
@@ -60,11 +93,11 @@
                                 @if($cuenta->telefono) Celular: {{ $cuenta->telefono }}<br> @endif
                                 @if($cuenta->cedula) CI/RIF: {{ $cuenta->cedula }}<br> @endif
                                 @if($cuenta->numero_cuenta) N° Cuenta: {{ $cuenta->numero_cuenta }}<br> @endif
-                                <strong style="color:var(--color-gold); font-size:1.1rem; display:block; margin-top:5px;">Monto exacto: <span x-text="'Bs ' + totalBs.toFixed(2)"></span></strong>
+                                <strong style="color:var(--color-gold); font-size:1.1rem; display:block; margin-top:5px;">Monto: <span x-text="'Bs ' + totalBs.toFixed(2)"></span></strong>
                             </div>
                         @else
                             <div style="font-size:0.8rem; margin-top:10px;">
-                                <strong style="color:var(--color-gold); font-size:1.1rem;">Monto exacto: <span x-text="'$ ' + totalUsd.toFixed(2)"></span></strong>
+                                <strong style="color:var(--color-gold); font-size:1.1rem;">Monto: <span x-text="'$ ' + totalUsd.toFixed(2)"></span></strong>
                             </div>
                         @endif
                     </div>
@@ -73,14 +106,14 @@
             </div>
 
             <div style="display:flex; justify-content:space-between; margin-top:20px;">
-                <button type="button" class="btn-standard" @click="step = 1">Volver</button>
-                <button type="button" class="btn-critical" @click="step = 3" x-bind:disabled="!selectedMethod">Reportar Pago</button>
+                <button type="button" class="btn-standard" @click="step = 2">Volver</button>
+                <button type="button" class="btn-critical" @click="step = 4" x-bind:disabled="!selectedMethod">Finaizar y Reportar</button>
             </div>
         </x-card>
 
-        <!-- Paso 3: Reporte de Pago -->
-        <x-card x-show="step === 3" class="gsap-step" style="display:none;">
-            <h3 style="margin-top:0; border-bottom:1px solid var(--color-border); padding-bottom:10px;">3. Confirma tu Pago</h3>
+        <!-- Paso 4: Reporte de Pago -->
+        <x-card x-show="step === 4" class="gsap-step" style="display:none;">
+            <h3 style="margin-top:0; border-bottom:1px solid var(--color-border); padding-bottom:10px;">4. Confirma tu Pago</h3>
             
             <div x-show="selectedMethod == 'pago_movil' || selectedMethod == 'transferencia'">
                 <div style="margin-top:15px;">
@@ -96,13 +129,13 @@
 
             <div x-show="selectedMethod == 'efectivo_usd' || selectedMethod == 'efectivo_bs'">
                 <p style="color:var(--color-muted); text-align:center; padding:20px;">
-                    Por favor, acerquese a la caja para entregar el efectivo. Muestre esta pantalla al operador.
+                    Has seleccionado pago en efectivo. Por favor, entrega el monto exacto al repartidor o en caja.
                 </p>
             </div>
 
             <div style="display:flex; justify-content:space-between; margin-top:20px;">
-                <button type="button" class="btn-standard" @click="step = 2">Volver</button>
-                <button type="submit" class="btn-critical" id="btn-submit">Finalizar Pedido</button>
+                <button type="button" class="btn-standard" @click="step = 3">Volver</button>
+                <button type="submit" class="btn-critical" id="btn-submit">Enviar Pedido Ahora</button>
             </div>
         </x-card>
     </form>
@@ -117,6 +150,7 @@ function checkoutWizard() {
         step: 1,
         selectedMethod: '',
         selectedAccount: null,
+        tipoEntrega: 'delivery',
         tasaBcv: {{ $tasaBcv }},
         
         init() {

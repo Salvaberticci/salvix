@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pago;
+use App\Models\CuentaBancaria;
+use App\Models\Configuracion;
+use App\Models\Pedido;
+use App\Models\DetallePedido;
+use Illuminate\Support\Facades\Validator;
 
 class PagoController extends Controller
 {
     public function index()
     {
-        $pagos = \App\Models\Pago::with('pedido', 'cuentaBancaria')
+        $pagos = Pago::with('pedido', 'cuentaBancaria')
                     ->orderBy('created_at', 'desc')
                     ->get();
         return view('pagos.index', compact('pagos'));
@@ -17,8 +23,8 @@ class PagoController extends Controller
     public function create()
     {
         // El wizard de pago público
-        $cuentas = \App\Models\CuentaBancaria::where('activa', true)->orderBy('orden')->get();
-        $tasaBcv = \App\Models\Configuracion::where('clave', 'tasa_bcv')->value('valor') ?? 0;
+        $cuentas = CuentaBancaria::where('activa', true)->orderBy('orden')->get();
+        $tasaBcv = Configuracion::where('clave', 'tasa_bcv')->value('valor') ?? 0;
         
         return view('pagos.wizard', compact('cuentas', 'tasaBcv'));
     }
@@ -26,7 +32,7 @@ class PagoController extends Controller
     public function store(Request $request)
     {
         // Este método recibe data del Wizard de pagos público y crea el Pedido + Pago pendiente
-        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'cart_data' => 'required|json',
             'metodo' => 'required|string',
             'cuenta_bancaria_id' => 'nullable|exists:cuenta_bancarias,id',
@@ -46,8 +52,12 @@ class PagoController extends Controller
         $totalBs = $totalUsd * $request->tasa_bcv;
 
         // 1. Crear Pedido
-        $pedido = \App\Models\Pedido::create([
+        $pedido = Pedido::create([
             'estado' => 'pendiente',
+            'cliente_nombre' => $request->cliente_nombre,
+            'cliente_telefono' => $request->cliente_telefono,
+            'direccion' => $request->direccion,
+            'tipo_entrega' => $request->tipo_entrega ?? 'delivery',
             'total_usd' => $totalUsd,
             'total_bs' => $totalBs,
             'tasa_bcv' => $request->tasa_bcv
@@ -55,7 +65,7 @@ class PagoController extends Controller
 
         // 2. Crear detalles
         foreach($cart as $item) {
-            \App\Models\DetallePedido::create([
+            DetallePedido::create([
                 'pedido_id' => $pedido->id,
                 'producto_id' => $item['id'],
                 'cantidad' => $item['qty'],
@@ -70,7 +80,7 @@ class PagoController extends Controller
             $pagoPath = $request->file('comprobante_imagen')->store('comprobantes', 'public');
         }
 
-        \App\Models\Pago::create([
+        Pago::create([
             'pedido_id' => $pedido->id,
             'cuenta_bancaria_id' => $request->cuenta_bancaria_id,
             'metodo' => $request->metodo,
@@ -79,7 +89,7 @@ class PagoController extends Controller
             'tasa_bcv' => $request->tasa_bcv,
             'referencia' => $request->referencia,
             'comprobante_imagen' => $pagoPath,
-            'estado' => 'pendiente' // Admin will verify this in /pagos
+            'estado' => 'pendiente' // Administrador verificará en /pagos
         ]);
 
         // Vaciar el carrito mediante AlpineJS se hace en el render de response (o pasando data a la view 'pagos.exito')
@@ -89,13 +99,13 @@ class PagoController extends Controller
     public function show(string $id)
     {
         // Return JSON details for modal
-        $pago = \App\Models\Pago::with('pedido.detalle.producto', 'cuentaBancaria')->findOrFail($id);
+        $pago = Pago::with('pedido.detalle.producto', 'cuentaBancaria')->findOrFail($id);
         return $pago;
     }
 
     public function update(Request $request, string $id)
     {
-        $pago = \App\Models\Pago::findOrFail($id);
+        $pago = Pago::findOrFail($id);
         $pago->update(['estado' => $request->estado, 'verificado_por' => auth()->id(), 'verificado_at' => now()]);
         
         // Si el pago se confirma y el pedido estaba pendiente, movemos el pedido a 'cocina' automáticamente
