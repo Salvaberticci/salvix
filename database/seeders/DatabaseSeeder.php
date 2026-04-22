@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CategoriaProductoSeeder::class,
             CuentaBancariaSeeder::class,
             ConfiguracionSeeder::class,
+            TemaSeeder::class,
             DemoDataSeeder::class,
         ]);
     }

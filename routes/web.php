@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('productos', ProductoController::class);
     Route::resource('inventario', InventarioController::class);
     Route::resource('cuentabancarias', \App\Http\Controllers\CuentaBancariaController::class);
+    Route::resource('temas', \App\Http\Controllers\TemaController::class);
+    Route::post('/temas/{id}/activar', [\App\Http\Controllers\TemaController::class, 'activar'])->name('temas.activar');
     
     Route::get('/configuracion', [\App\Http\Controllers\ConfiguracionController::class, 'index'])->name('configuracion.index');
     Route::put('/configuracion', [\App\Http\Controllers\ConfiguracionController::class, 'update'])->name('configuracion.update');

@@ -23,18 +23,42 @@
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
+    <!-- Google Fonts Dynamic Injection -->
+    @php
+        $activeTheme = \App\Models\Tema::where('es_activo', true)->first();
+        $themeConfig = $activeTheme->config ?? [];
+        $activeFont = $themeConfig['font_family'] ?? "'Inter', sans-serif";
+        // Extract font name for Google Fonts API
+        preg_match("/'([^']+)'/", $activeFont, $matches);
+        $fontName = $matches[1] ?? 'Inter';
+        $fontQuery = str_replace(' ', '+', $fontName);
+    @endphp
+    <link href="https://fonts.googleapis.com/css2?family={{ $fontQuery }}:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        /* Public layout specific overrides for clean light mode */
+        :root {
+            --public-bg: {{ $themeConfig['bg_color'] ?? 'var(--color-white)' }};
+            --public-header-bg: {{ $themeConfig['header_bg'] ?? 'var(--color-black)' }};
+            --public-header-text: {{ $themeConfig['header_text'] ?? 'white' }};
+            --public-card-bg: {{ $themeConfig['card_bg'] ?? 'var(--color-white)' }};
+            --public-card-text: {{ $themeConfig['card_text'] ?? '#1a1a1a' }};
+            --public-primary: {{ $themeConfig['primary_color'] ?? 'var(--color-red)' }};
+            --public-radius: {{ ($themeConfig['border_radius'] ?? 2) . 'px' }};
+            --public-font: {!! $activeFont !!};
+        }
+
         body {
-            background-color: var(--color-white);
+            background-color: var(--public-bg);
+            font-family: var(--public-font);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
             margin: 0;
+            color: var(--public-card-text);
         }
         .public-header {
-            background-color: var(--color-black);
-            border-bottom: 2px solid var(--color-gold);
+            background-color: var(--public-header-bg);
+            border-bottom: 2px solid var(--public-primary);
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
@@ -42,10 +66,26 @@
             position: sticky;
             top: 0;
             z-index: 1001;
-            color: white;
+            color: var(--public-header-text);
         }
         .app-content {
             flex: 1;
+        }
+        
+        /* Overrides para el diseño dinámico */
+        .card, x-card, [role="grid"] > article {
+            background-color: var(--public-card-bg) !important;
+            color: var(--public-card-text) !important;
+            border-radius: var(--public-radius) !important;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .btn-critical, button[type="submit"]:not(.btn-standard) {
+            background-color: var(--public-primary) !important;
+            border-color: var(--public-primary) !important;
+            border-radius: var(--public-radius) !important;
+        }
+        .label-editorial {
+            font-family: var(--public-font);
         }
     </style>
 </head>
@@ -54,12 +94,14 @@
     <header class="public-header">
         <div style="display:flex; align-items:center; gap:15px;">
             <div style="display:flex; align-items:center; gap:10px;">
-                @if(file_exists(public_path('img/logo.png')))
+                @if($activeTheme && $activeTheme->logo_path)
+                    <img src="{{ asset('storage/' . $activeTheme->logo_path) }}" alt="Logo" style="max-height: 40px; width:auto;">
+                @elseif(file_exists(public_path('img/logo.png')))
                     <img src="{{ asset('img/logo.png') }}" alt="Logo" style="max-height: 40px; width:auto;">
                 @else
-                    <h1 style="margin:0; font-size:1.4rem; color:white; letter-spacing:-1px;">SALVIX</h1>
+                    <h1 style="margin:0; font-size:1.4rem; color:var(--public-header-text); letter-spacing:-1px;">SALVIX</h1>
                 @endif
-                <span class="label-editorial" style="font-size:0.7rem; color:white; border-left: 1px solid rgba(255,255,255,0.3); padding-left:10px;">MENÚ DIGITAL</span>
+                <span class="label-editorial" style="font-size:0.7rem; color:var(--public-header-text); border-left: 1px solid rgba(255,255,255,0.3); padding-left:10px;">MENÚ DIGITAL</span>
             </div>
         </div>
         <div>

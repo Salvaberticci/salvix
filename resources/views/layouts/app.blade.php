@@ -75,6 +75,11 @@
                         <i class="ph ph-hamburger app-sidebar-icon"></i>
                         <span>Menú & Productos</span>
                     </a>
+
+                    <a href="{{ route('temas.index') }}" class="app-sidebar-link {{ request()->is('temas*') ? 'active' : '' }}">
+                        <i class="ph ph-palette app-sidebar-icon"></i>
+                        <span>Estilos Menú</span>
+                    </a>
                     
                     <a href="{{ url('/inventario') }}" class="app-sidebar-link {{ request()->is('inventario*') ? 'active' : '' }}">
                         <i class="ph ph-package app-sidebar-icon"></i>
