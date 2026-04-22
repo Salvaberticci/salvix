@@ -60,6 +60,11 @@
                     <i class="ph ph-wallet app-sidebar-icon"></i>
                     <span>Pagos</span>
                 </a>
+
+                <a href="{{ route('cuentabancarias.index') }}" class="app-sidebar-link {{ request()->is('cuentabancarias*') ? 'active' : '' }}">
+                    <i class="ph ph-bank app-sidebar-icon"></i>
+                    <span>Bancos & Métodos</span>
+                </a>
                 
                 @if(auth()->user() && auth()->user()->rol === 'admin')
                     <div style="margin: 20px 0 10px 25px;">
