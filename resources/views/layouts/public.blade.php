@@ -53,13 +53,6 @@
 
     <header class="public-header">
         <div style="display:flex; align-items:center; gap:15px;">
-            <!-- Botón Volver (Solo en el Wizard) -->
-            @if(Request::is('pagar'))
-                <a href="{{ route('catalogo.index') }}" class="btn-standard" style="padding: 5px 12px !important; border-color:rgba(255,255,255,0.2) !important; color:white; font-size: 0.7rem; text-decoration:none; display:flex; align-items:center; gap:5px;">
-                    <i class="ph ph-arrow-left"></i> Volver al Menú
-                </a>
-            @endif
-            
             <div style="display:flex; align-items:center; gap:10px;">
                 @if(file_exists(public_path('img/logo.png')))
                     <img src="{{ asset('img/logo.png') }}" alt="Logo" style="max-height: 40px; width:auto;">

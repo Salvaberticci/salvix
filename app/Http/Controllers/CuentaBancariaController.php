@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\CuentaBancaria;
 
 class CuentaBancariaController extends Controller
 {
     public function index()
     {
-        $cuentas = \App\Models\CuentaBancaria::orderBy('orden')->get();
+        $cuentas = CuentaBancaria::orderBy('orden')->get();
         return view('cuentabancarias.index', compact('cuentas'));
     }
 
@@ -32,16 +33,16 @@ class CuentaBancariaController extends Controller
         ]);
 
         $data['activa'] = $request->has('activa');
-        \App\Models\CuentaBancaria::create($data);
+        CuentaBancaria::create($data);
         return redirect()->route('cuentabancarias.index')->with('success', 'Cuenta bancaria registrada.');
     }
 
-    public function edit(\App\Models\CuentaBancaria $cuentabancaria)
+    public function edit(CuentaBancaria $cuentabancaria)
     {
         return view('cuentabancarias.edit', compact('cuentabancaria'));
     }
 
-    public function update(Request $request, \App\Models\CuentaBancaria $cuentabancaria)
+    public function update(Request $request, CuentaBancaria $cuentabancaria)
     {
         $data = $request->validate([
             'alias' => 'required|string|max:255',
@@ -60,7 +61,7 @@ class CuentaBancariaController extends Controller
         return redirect()->route('cuentabancarias.index')->with('success', 'Cuenta actualizada.');
     }
 
-    public function destroy(\App\Models\CuentaBancaria $cuentabancaria)
+    public function destroy(CuentaBancaria $cuentabancaria)
     {
         $cuentabancaria->delete();
         return redirect()->route('cuentabancarias.index')->with('success', 'Cuenta eliminada.');

@@ -42,6 +42,12 @@
                 </div>
             </div>
             <button type="button" class="btn-critical" style="width:100%; margin-top:20px;" @click="step = 2">Continuar</button>
+            
+            <div style="text-align:center; margin-top:15px;">
+                <a href="{{ route('catalogo.index') }}" style="color:var(--color-text-mid); font-size:0.8rem; text-decoration:none;">
+                    <i class="ph ph-arrow-left"></i> Volver al Menú para agregar más productos
+                </a>
+            </div>
         </x-card>
 
         <!-- Paso 2: Datos de Entrega -->
