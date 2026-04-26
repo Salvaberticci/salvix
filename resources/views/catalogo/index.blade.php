@@ -8,7 +8,7 @@
         <!-- Cart Trigger -->
         <button class="btn-standard" @click="isCartOpen = true" style="position:relative; padding: 12px 24px; border-width: 2px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; overflow: visible !important;">
             <i class="ph ph-shopping-bag" style="font-size: 1.2rem;"></i> Mi Pedido
-            <span x-show="totalItems > 0" x-text="totalItems" style="position:absolute; top:-8px; right:-8px; background:var(--color-red); color:white; border-radius:50%; width:24px; height:24px; font-size:12px; display:flex; justify-content:center; align-items:center; font-weight:900; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3); z-index: 10; line-height: 0;"></span>
+            <span x-show="totalItems > 0" x-text="totalItems" style="position:absolute; top:-10px; right:-10px; background:var(--color-red); color:white; border-radius:50%; width:22px; height:22px; font-size:12px; display:flex; justify-content:center; align-items:center; font-weight:bold; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 100; pointer-events: none;"></span>
         </button>
     </div>
 
