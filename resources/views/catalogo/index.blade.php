@@ -13,21 +13,21 @@
     </div>
 
     <!-- Categorías Tabs -->
-    <nav style="margin-bottom: 40px; overflow-x:auto; white-space:nowrap; padding-bottom:10px;">
+    <nav class="category-nav" style="margin-bottom: 40px; overflow-x:auto; white-space:nowrap; padding-bottom:10px;">
         <ul style="list-style:none; padding:0; margin:0; display:flex; gap:15px;">
             <li>
-                <a href="#" @click.prevent="activeCategory = 'all'" :style="activeCategory === 'all' ? 'border-bottom: 2px solid var(--color-red); color:var(--color-black)' : 'color:var(--color-muted)'" style="text-decoration:none; text-transform:uppercase; font-size:0.8rem; font-weight:bold; padding-bottom:5px;">Todo el Menú</a>
+                <a href="#" class="category-link" :class="{ 'active': activeCategory === 'all' }" @click.prevent="activeCategory = 'all'">Todo el Menú</a>
             </li>
             @foreach($categorias as $categoria)
             <li>
-                <a href="#" @click.prevent="activeCategory = {{ $categoria->id }}" :style="activeCategory === {{ $categoria->id }} ? 'border-bottom: 2px solid var(--color-red); color:var(--color-black)' : 'color:var(--color-muted)'" style="text-decoration:none; text-transform:uppercase; font-size:0.8rem; font-weight:bold; padding-bottom:5px;">{{ $categoria->nombre }}</a>
+                <a href="#" class="category-link" :class="{ 'active': activeCategory === {{ $categoria->id }} }" @click.prevent="activeCategory = {{ $categoria->id }}">{{ $categoria->nombre }}</a>
             </li>
             @endforeach
         </ul>
     </nav>
 
     <!-- Platos Grid -->
-    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;">
+    <div class="product-grid">
         @foreach($categorias as $categoria)
             @foreach($categoria->productos as $producto)
             <div class="gsap-item" x-show="activeCategory === 'all' || activeCategory === {{ $categoria->id }}" x-transition style="display:none;">
@@ -41,12 +41,12 @@
                     @endif
                     
                     <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <h3 style="margin:0; font-size: 1.2rem;">{{ $producto->nombre }}</h3>
-                        <span class="price-tag" style="font-weight:bold; color:var(--color-gold);">${{ number_format($producto->precio_usd, 2) }}</span>
+                        <h3 class="product-title">{{ $producto->nombre }}</h3>
+                        <span class="price-tag">${{ number_format($producto->precio_usd, 2) }}</span>
                     </div>
-                    <p style="color:var(--color-muted); font-size:0.9rem; margin-top:10px;">{{ $producto->descripcion }}</p>
+                    <p class="product-desc">{{ $producto->descripcion }}</p>
                     
-                    <button class="btn-standard" style="width:100%; border-color:var(--color-border); margin-top:15px;" @click="addToCart({{ $producto->id }}, '{{ $producto->nombre }}', {{ $producto->precio_usd }})">
+                    <button class="btn-standard btn-add-cart" @click="addToCart({{ $producto->id }}, '{{ $producto->nombre }}', {{ $producto->precio_usd }})">
                         Agregar al pedido
                     </button>
                 </x-card>

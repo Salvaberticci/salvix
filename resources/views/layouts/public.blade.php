@@ -73,6 +73,43 @@
         }
         
         /* Overrides para el diseño dinámico base */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .category-link {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding-bottom: 5px;
+            color: var(--color-muted);
+            transition: all 0.2s ease;
+        }
+        .category-link.active {
+            border-bottom: 2px solid var(--public-primary);
+            color: var(--color-text-dark);
+        }
+        .product-title {
+            margin: 0;
+            font-size: 1.2rem;
+            line-height: 1.2;
+        }
+        .price-tag {
+            font-weight: bold;
+            color: var(--color-gold);
+        }
+        .product-desc {
+            color: var(--color-text-mid);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+        .btn-add-cart {
+            width: 100%;
+            margin-top: 15px !important;
+        }
         .card, x-card, [role="grid"] > article {
             background-color: var(--public-card-bg) !important;
             color: var(--public-card-text) !important;
@@ -113,10 +150,10 @@
             margin: -25px -25px 25px -25px !important;
             height: 220px !important;
         }
-        .theme-ferrari-chiaroscuro h3 {
+        .theme-ferrari-chiaroscuro .product-title {
             font-weight: 700;
             letter-spacing: -0.5px;
-            color: var(--color-black);
+            color: var(--public-card-text);
         }
 
         /* 2. RETRO DINER (Modern Pop-Art & Brutalism) */
@@ -130,6 +167,20 @@
             box-shadow: 0 6px 0 #111;
             background-color: var(--public-header-bg);
             padding: 20px 30px;
+        }
+        .theme-retro-diner .category-link {
+            background: #FFF;
+            border: 3px solid #111;
+            border-radius: 8px 8px 0 0;
+            padding: 10px 20px !important;
+            color: #111 !important;
+            transform: translateY(3px);
+        }
+        .theme-retro-diner .category-link.active {
+            background: var(--public-primary);
+            color: #FFF !important;
+            transform: translateY(0);
+            border-bottom-color: var(--public-primary);
         }
         .theme-retro-diner .card, .theme-retro-diner x-card {
             border: 3px solid #111 !important;
@@ -150,12 +201,17 @@
             border-radius: 9px 9px 0 0 !important;
             height: 200px !important;
         }
-        .theme-retro-diner h3 {
+        .theme-retro-diner .product-title {
             font-family: 'Rubik', var(--public-font);
             font-weight: 900;
             font-size: 1.4rem;
             color: #111;
             text-transform: uppercase;
+        }
+        .theme-retro-diner .product-desc {
+            color: #444;
+            font-weight: 600;
+            font-size: 0.95rem;
         }
         .theme-retro-diner .price-tag {
             background: var(--public-primary);
@@ -166,7 +222,7 @@
             font-weight: 900;
             font-size: 1rem;
         }
-        .theme-retro-diner .btn-standard {
+        .theme-retro-diner .btn-add-cart {
             background-color: #111 !important;
             color: #FFF !important;
             border: 3px solid #111 !important;
@@ -174,10 +230,9 @@
             font-weight: 900 !important;
             text-transform: uppercase;
             box-shadow: 4px 4px 0 var(--public-primary) !important;
-            margin-top: 20px !important;
             padding: 12px !important;
         }
-        .theme-retro-diner .btn-standard:active {
+        .theme-retro-diner .btn-add-cart:active {
             transform: translate(4px, 4px);
             box-shadow: 0 0 0 var(--public-primary) !important;
         }
@@ -185,6 +240,7 @@
         /* 3. NORDIC WHITE (Extreme Scandinavian Minimalism) */
         body.theme-nordic-white {
             background-color: #FAFAFA;
+            color: #333;
         }
         .theme-nordic-white .public-header {
             border-bottom: 1px solid rgba(0,0,0,0.04);
@@ -192,9 +248,21 @@
             backdrop-filter: blur(10px);
             padding: 20px 40px;
         }
-        .theme-nordic-white .grid {
-            gap: 70px !important;
+        .theme-nordic-white .category-link {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: #AAA !important;
+            border: none !important;
+        }
+        .theme-nordic-white .category-link.active {
+            color: #222 !important;
+            font-weight: 400;
+            border-bottom: 1px solid #222 !important;
+        }
+        .theme-nordic-white .product-grid {
+            gap: 80px !important;
             padding: 40px 0;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         }
         .theme-nordic-white .card, .theme-nordic-white x-card {
             border: none !important;
@@ -204,18 +272,18 @@
         }
         .theme-nordic-white .product-img-container {
             border-radius: 24px !important;
-            height: 320px !important; /* Huge gorgeous images */
+            height: 350px !important; /* Huge gorgeous images */
             margin: 0 0 25px 0 !important;
             box-shadow: 0 20px 50px rgba(0,0,0,0.06);
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
         }
         .theme-nordic-white .card:hover .product-img-container {
-            transform: scale(1.03);
+            transform: scale(1.02);
             box-shadow: 0 30px 60px rgba(0,0,0,0.1);
         }
-        .theme-nordic-white h3 {
-            font-size: 1.5rem;
-            font-weight: 500;
+        .theme-nordic-white .product-title {
+            font-size: 1.6rem;
+            font-weight: 300;
             color: #222;
             text-align: center;
             letter-spacing: -0.5px;
@@ -226,16 +294,17 @@
             text-align: center;
             font-size: 1.1rem;
             color: #888 !important;
-            font-weight: 400 !important;
+            font-weight: 300 !important;
         }
-        .theme-nordic-white p {
+        .theme-nordic-white .product-desc {
             text-align: center;
-            color: #666;
+            color: #777;
             line-height: 1.6;
             margin-top: 15px !important;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            font-weight: 300;
         }
-        .theme-nordic-white .btn-standard {
+        .theme-nordic-white .btn-add-cart {
             background-color: transparent !important;
             border: 1px solid #DDD !important;
             color: #222 !important;
@@ -246,8 +315,9 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+            transition: all 0.3s ease;
         }
-        .theme-nordic-white .btn-standard:hover {
+        .theme-nordic-white .btn-add-cart:hover {
             background-color: #222 !important;
             color: #FFF !important;
             border-color: #222 !important;
@@ -268,16 +338,28 @@
             border-bottom: 1px solid rgba(0, 255, 255, 0.2);
             box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
         }
+        .theme-cyberpunk-night .category-link {
+            color: #00FFFF !important;
+            font-family: 'JetBrains Mono', monospace;
+            text-shadow: 0 0 5px rgba(0,255,255,0.3);
+            border: 1px solid transparent;
+            padding: 5px 15px;
+        }
+        .theme-cyberpunk-night .category-link.active {
+            border: 1px solid #00FFFF !important;
+            background: rgba(0,255,255,0.1);
+            box-shadow: inset 0 0 10px rgba(0,255,255,0.2);
+        }
         .theme-cyberpunk-night .card, .theme-cyberpunk-night x-card {
-            background: rgba(15, 15, 25, 0.7) !important;
-            border: 1px solid rgba(0, 255, 255, 0.15) !important;
+            background: rgba(10, 10, 20, 0.8) !important;
+            border: 1px solid rgba(0, 255, 255, 0.2) !important;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
             border-radius: 0 !important; /* Sharp edges */
             padding: 20px !important;
             position: relative;
             overflow: visible !important;
+            color: #FFF !important;
         }
-        /* Cyberpunk Corner Accent */
         .theme-cyberpunk-night .card::before {
             content: '';
             position: absolute;
@@ -290,7 +372,7 @@
         }
         .theme-cyberpunk-night .card:hover {
             border-color: rgba(255, 0, 255, 0.5) !important;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.15) !important;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.2) !important;
         }
         .theme-cyberpunk-night .product-img-container {
             height: 200px !important;
@@ -299,13 +381,14 @@
             filter: contrast(1.1) saturate(1.2);
             clip-path: polygon(0 0, 100% 0, 100% 90%, 95% 100%, 0 100%);
         }
-        .theme-cyberpunk-night h3 {
+        .theme-cyberpunk-night .product-title {
             font-family: 'JetBrains Mono', monospace;
             font-size: 1.1rem;
             color: #FFF;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 5px;
+            text-shadow: 2px 2px 0px rgba(0,255,255,0.3);
         }
         .theme-cyberpunk-night .price-tag {
             color: #00FFFF !important;
@@ -313,11 +396,12 @@
             font-size: 1.1rem;
             text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
         }
-        .theme-cyberpunk-night p {
+        .theme-cyberpunk-night .product-desc {
             color: #A0A0B0;
             font-size: 0.85rem;
+            font-family: sans-serif;
         }
-        .theme-cyberpunk-night .btn-standard {
+        .theme-cyberpunk-night .btn-add-cart {
             background: rgba(255, 0, 255, 0.1) !important;
             color: #FF00FF !important;
             border: 1px solid #FF00FF !important;
@@ -326,10 +410,9 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             position: relative;
-            overflow: hidden;
             transition: all 0.2s;
         }
-        .theme-cyberpunk-night .btn-standard:hover {
+        .theme-cyberpunk-night .btn-add-cart:hover {
             background: #FF00FF !important;
             color: #000 !important;
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.5) !important;
@@ -337,39 +420,52 @@
 
         /* 5. MIDNIGHT EMERALD (Ultra-Luxury / Michelin Star) */
         body.theme-midnight-emerald {
-            background-color: #0B1612; /* Deep dark emerald */
+            background-color: #080D0B; /* Deep dark emerald */
+            color: #E8EBE9;
         }
         .theme-midnight-emerald .public-header {
-            background-color: #08110D;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Subtle Gold */
+            background-color: #050807;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15); /* Subtle Gold */
         }
         .theme-midnight-emerald .public-header h1 {
             color: #D4AF37 !important; /* Gold logo text */
             font-family: 'Playfair Display', serif;
         }
-        .theme-midnight-emerald .grid {
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
-            gap: 40px !important;
+        .theme-midnight-emerald .category-link {
+            color: #889988 !important;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+        .theme-midnight-emerald .category-link.active {
+            color: #D4AF37 !important;
+            border-bottom: 1px solid #D4AF37 !important;
+        }
+        .theme-midnight-emerald .product-grid {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 50px;
             padding: 30px 0;
         }
         .theme-midnight-emerald .card, .theme-midnight-emerald x-card {
-            background: #11201A !important; /* Slightly lighter emerald */
-            border: 1px solid rgba(212, 175, 55, 0.15) !important;
+            background: #0C1411 !important; /* Slightly lighter emerald */
+            border: 1px solid rgba(212, 175, 55, 0.1) !important;
             box-shadow: 0 15px 35px rgba(0,0,0,0.4) !important;
             border-radius: 2px !important;
             padding: 20px !important;
             transition: all 0.4s ease;
+            color: #E8EBE9 !important;
         }
         .theme-midnight-emerald .card:hover {
             border-color: rgba(212, 175, 55, 0.4) !important;
             transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6) !important;
         }
         .theme-midnight-emerald .product-img-container {
             height: 340px !important; /* Portrait mode (elegant) */
             margin: -20px -20px 25px -20px !important;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.3) !important;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2) !important;
+            filter: brightness(0.9) contrast(1.1);
         }
-        .theme-midnight-emerald h3 {
+        .theme-midnight-emerald .product-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
             color: #E8EBE9;
@@ -385,28 +481,29 @@
             font-family: 'Playfair Display', serif;
             font-style: italic;
         }
-        .theme-midnight-emerald p {
+        .theme-midnight-emerald .product-desc {
             text-align: center;
-            color: #90A098;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            color: #889988;
+            font-size: 0.95rem;
+            line-height: 1.6;
             margin-top: 15px !important;
         }
-        .theme-midnight-emerald .btn-standard {
+        .theme-midnight-emerald .btn-add-cart {
             background: transparent !important;
-            border: 1px solid rgba(212, 175, 55, 0.5) !important;
+            border: 1px solid rgba(212, 175, 55, 0.4) !important;
             color: #D4AF37 !important;
             border-radius: 0 !important;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 0.8rem !important;
             padding: 12px !important;
-            margin-top: 20px !important;
+            margin-top: 25px !important;
             transition: all 0.3s ease;
         }
-        .theme-midnight-emerald .btn-standard:hover {
+        .theme-midnight-emerald .btn-add-cart:hover {
             background: rgba(212, 175, 55, 0.1) !important;
             border-color: #D4AF37 !important;
+            color: #FFF !important;
         }
     </style>
 </head>
