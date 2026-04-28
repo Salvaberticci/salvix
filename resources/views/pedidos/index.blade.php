@@ -7,10 +7,10 @@
 
     @foreach($estados as $key => $title)
     <!-- Column -->
-    <div style="min-width: 300px; flex:1; background:var(--color-surface); padding:15px; border-radius:2px; height:auto; min-height:400px; border-top: 3px solid @if($key=='pendiente') var(--color-warning) @elseif($key=='cocina') var(--color-gold) @elseif($key=='listo') var(--color-info) @else var(--color-success) @endif;">
-        <h3 style="color:var(--color-white); font-size:1.1rem; margin-top:0; border-bottom:1px solid var(--color-border-dark); padding-bottom:10px;">
+    <div style="min-width: 300px; flex:1; background:#f4f6f8; padding:15px; border-radius:4px; height:auto; min-height:400px; border-top: 4px solid @if($key=='pendiente') var(--color-warning) @elseif($key=='cocina') var(--color-gold) @elseif($key=='listo') var(--color-info) @else var(--color-success) @endif; box-shadow: inset 0 0 10px rgba(0,0,0,0.02);">
+        <h3 style="color:var(--color-black); font-size:1.1rem; margin-top:0; border-bottom:2px solid #e0e0e0; padding-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
             {{ $title }}
-            <span style="float:right; background:rgba(255,255,255,0.1); padding:2px 8px; border-radius:10px; font-size:0.8rem;">
+            <span style="background:var(--color-black); color:white; padding:2px 10px; border-radius:12px; font-size:0.8rem; font-weight:bold;">
                 {{ isset($pedidos[$key]) ? $pedidos[$key]->count() : 0 }}
             </span>
         </h3>
@@ -62,8 +62,8 @@
                 </div>
                 @endforeach
             @else
-                <div style="text-align:center; padding:20px; color:var(--color-muted); font-size:0.9rem;">
-                    Sin pedidos
+                <div style="text-align:center; padding:30px 20px; color:#a0a0a0; font-size:0.9rem; border: 2px dashed #ddd; border-radius: 4px;">
+                    Sin pedidos en esta fase
                 </div>
             @endif
         </div>
