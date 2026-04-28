@@ -33,16 +33,16 @@
             <div class="gsap-item" x-show="activeCategory === 'all' || activeCategory === {{ $categoria->id }}" x-transition style="display:none;">
                 <x-card>
                     @if($producto->imagen)
-                    <div style="height: 200px; background-image: url('{{ asset('storage/' . $producto->imagen) }}'); background-size: cover; background-position: center; margin: -20px -20px 20px -20px;"></div>
+                    <div class="product-img-container" style="height: 200px; background-image: url('{{ asset('storage/' . $producto->imagen) }}'); background-size: cover; background-position: center; margin: -20px -20px 20px -20px;"></div>
                     @else
-                    <div style="height: 200px; background: #e0e0e0; margin: -20px -20px 20px -20px; display:flex; justify-content:center; align-items:center;">
+                    <div class="product-img-container" style="height: 200px; background: #e0e0e0; margin: -20px -20px 20px -20px; display:flex; justify-content:center; align-items:center;">
                         <i class="ph ph-image" style="font-size: 3rem; color: #aaa;"></i>
                     </div>
                     @endif
                     
                     <div style="display:flex; justify-content:space-between; align-items:flex-start;">
                         <h3 style="margin:0; font-size: 1.2rem;">{{ $producto->nombre }}</h3>
-                        <span style="font-weight:bold; color:var(--color-gold);">${{ number_format($producto->precio_usd, 2) }}</span>
+                        <span class="price-tag" style="font-weight:bold; color:var(--color-gold);">${{ number_format($producto->precio_usd, 2) }}</span>
                     </div>
                     <p style="color:var(--color-muted); font-size:0.9rem; margin-top:10px;">{{ $producto->descripcion }}</p>
                     
