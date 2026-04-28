@@ -7,7 +7,7 @@
 
     @foreach($estados as $key => $title)
     <!-- Column -->
-    <div style="min-width: 300px; flex:1; background:#f4f6f8; padding:15px; border-radius:4px; height:auto; min-height:400px; border-top: 4px solid @if($key=='pendiente') var(--color-warning) @elseif($key=='cocina') var(--color-gold) @elseif($key=='listo') var(--color-info) @else var(--color-success) @endif; box-shadow: inset 0 0 10px rgba(0,0,0,0.02);">
+    <div style="min-width: 300px; flex:1; background:#f4f6f8; padding:15px; border-radius:4px; height:auto; min-height:400px; border-top: 4px solid @if($key=='pendiente') var(--color-warning) @elseif($key=='cocina') var(--color-gold) @elseif($key=='listo') var(--color-info) @else var(--color-success) @endif; border-left: 1px solid var(--color-border-dark); border-right: 1px solid var(--color-border-dark); border-bottom: 1px solid var(--color-border-dark); box-shadow: inset 0 0 10px rgba(0,0,0,0.02);">
         <h3 style="color:var(--color-black); font-size:1.1rem; margin-top:0; border-bottom:2px solid #e0e0e0; padding-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
             {{ $title }}
             <span style="background:var(--color-black); color:white; padding:2px 10px; border-radius:12px; font-size:0.8rem; font-weight:bold;">
