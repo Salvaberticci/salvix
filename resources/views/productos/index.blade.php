@@ -3,9 +3,20 @@
 @section('header_title', 'Gestión de Productos')
 
 @section('content')
-<div style="display:flex; justify-content:flex-end; margin-bottom: 20px;">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+    <div class="tabs-editorial">
+        <a href="{{ route('productos.index') }}" class="tab-link active">Productos</a>
+        <a href="{{ route('categorias.index') }}" class="tab-link">Categorías</a>
+    </div>
     <a href="{{ route('productos.create') }}" class="btn-critical" style="padding: 10px 20px; text-decoration:none;"> + Nuevo Producto </a>
 </div>
+
+<style>
+    .tabs-editorial { display: flex; gap: 20px; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 10px; margin-bottom: 10px; }
+    .tab-link { font-weight: 600; color: var(--color-muted); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; }
+    .tab-link.active { color: var(--color-black); border-bottom: 2px solid var(--color-red); padding-bottom: 10px; margin-bottom: -12px; }
+    .tab-link:hover { color: var(--color-text-dark); }
+</style>
 
 <x-card>
     <div style="overflow-x:auto;">
