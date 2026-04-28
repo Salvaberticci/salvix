@@ -182,7 +182,7 @@
             transform: translateY(0);
             border-bottom-color: var(--public-primary);
         }
-        .theme-retro-diner .card, .theme-retro-diner x-card {
+        .theme-retro-diner .card, .theme-retro-diner x-card, .theme-retro-diner article {
             border: 3px solid #111 !important;
             box-shadow: 8px 8px 0 #111 !important;
             border-radius: 12px !important;
@@ -264,7 +264,7 @@
             padding: 40px 0;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         }
-        .theme-nordic-white .card, .theme-nordic-white x-card {
+        .theme-nordic-white .card, .theme-nordic-white x-card, .theme-nordic-white article {
             border: none !important;
             background: transparent !important;
             box-shadow: none !important;
@@ -332,11 +332,10 @@
             background-size: 30px 30px;
             color: #E0E0E0;
         }
-        .theme-cyberpunk-night .public-header {
-            background: rgba(5, 5, 16, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
+        .theme-cyberpunk-night h1, .theme-cyberpunk-night h2, .theme-cyberpunk-night h3, .theme-cyberpunk-night h4, .theme-cyberpunk-night h5, .theme-cyberpunk-night h6 {
+            color: #00FFFF !important;
+            font-family: 'JetBrains Mono', monospace;
+            text-shadow: 0 0 5px rgba(0,255,255,0.3);
         }
         .theme-cyberpunk-night .category-link {
             color: #00FFFF !important;
@@ -350,7 +349,7 @@
             background: rgba(0,255,255,0.1);
             box-shadow: inset 0 0 10px rgba(0,255,255,0.2);
         }
-        .theme-cyberpunk-night .card, .theme-cyberpunk-night x-card {
+        .theme-cyberpunk-night .card, .theme-cyberpunk-night x-card, .theme-cyberpunk-night article {
             background: rgba(10, 10, 20, 0.8) !important;
             border: 1px solid rgba(0, 255, 255, 0.2) !important;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
@@ -427,8 +426,8 @@
             background-color: #050807;
             border-bottom: 1px solid rgba(212, 175, 55, 0.15); /* Subtle Gold */
         }
-        .theme-midnight-emerald .public-header h1 {
-            color: #D4AF37 !important; /* Gold logo text */
+        .theme-midnight-emerald h1, .theme-midnight-emerald h2, .theme-midnight-emerald h3, .theme-midnight-emerald h4, .theme-midnight-emerald h5, .theme-midnight-emerald h6 {
+            color: #D4AF37 !important;
             font-family: 'Playfair Display', serif;
         }
         .theme-midnight-emerald .category-link {
@@ -445,7 +444,7 @@
             gap: 50px;
             padding: 30px 0;
         }
-        .theme-midnight-emerald .card, .theme-midnight-emerald x-card {
+        .theme-midnight-emerald .card, .theme-midnight-emerald x-card, .theme-midnight-emerald article {
             background: #0C1411 !important; /* Slightly lighter emerald */
             border: 1px solid rgba(212, 175, 55, 0.1) !important;
             box-shadow: 0 15px 35px rgba(0,0,0,0.4) !important;
@@ -488,7 +487,7 @@
             line-height: 1.6;
             margin-top: 15px !important;
         }
-        .theme-midnight-emerald .btn-add-cart {
+        .theme-midnight-emerald .btn-add-cart, .theme-midnight-emerald .btn-standard {
             background: transparent !important;
             border: 1px solid rgba(212, 175, 55, 0.4) !important;
             color: #D4AF37 !important;
@@ -500,10 +499,19 @@
             margin-top: 25px !important;
             transition: all 0.3s ease;
         }
-        .theme-midnight-emerald .btn-add-cart:hover {
+        .theme-midnight-emerald .btn-add-cart:hover, .theme-midnight-emerald .btn-standard:hover {
             background: rgba(212, 175, 55, 0.1) !important;
             border-color: #D4AF37 !important;
             color: #FFF !important;
+        }
+        
+        /* Hide scrollbars on category nav */
+        .category-nav::-webkit-scrollbar {
+            display: none;
+        }
+        .category-nav {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
     </style>
 </head>
