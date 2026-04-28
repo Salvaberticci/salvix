@@ -91,51 +91,110 @@
         }
 
         /* ==========================================================
-           RADICAL THEME OVERRIDES (Scoped by body class)
+           RADICAL THEME OVERRIDES (ULTRA-PREMIUM UI/UX)
            ========================================================== */
 
-        /* 1. RETRO DINER (Brutalist / Comic Style) */
-        body.theme-retro-diner {
-            background-image: radial-gradient(var(--public-primary) 1px, transparent 1px);
-            background-size: 20px 20px;
+        /* 1. FERRARI CHIAROSCURO (Modern Editorial - Default) */
+        body.theme-ferrari-chiaroscuro {
             background-color: var(--public-bg);
         }
+        .theme-ferrari-chiaroscuro .card, .theme-ferrari-chiaroscuro x-card {
+            border: 1px solid rgba(0,0,0,0.08) !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03) !important;
+            padding: 25px !important;
+            border-radius: 4px !important;
+        }
+        .theme-ferrari-chiaroscuro .card:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
+            transform: translateY(-5px);
+        }
+        .theme-ferrari-chiaroscuro .product-img-container {
+            border-radius: 2px !important;
+            margin: -25px -25px 25px -25px !important;
+            height: 220px !important;
+        }
+        .theme-ferrari-chiaroscuro h3 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--color-black);
+        }
+
+        /* 2. RETRO DINER (Modern Pop-Art & Brutalism) */
+        body.theme-retro-diner {
+            background-color: #FFF9E6; /* Warm cream */
+            background-image: radial-gradient(#FFD700 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+        }
         .theme-retro-diner .public-header {
-            border-bottom: 4px solid black;
-            box-shadow: 0 4px 0 black;
+            border-bottom: 4px solid #111;
+            box-shadow: 0 6px 0 #111;
+            background-color: var(--public-header-bg);
+            padding: 20px 30px;
         }
-        .theme-retro-diner .card, .theme-retro-diner x-card, .theme-retro-diner [role="grid"] > article {
-            border: 3px solid black !important;
-            box-shadow: 6px 6px 0 black !important;
-            transform: translate(-2px, -2px);
-        }
-        .theme-retro-diner .card:hover, .theme-retro-diner x-card:hover {
+        .theme-retro-diner .card, .theme-retro-diner x-card {
+            border: 3px solid #111 !important;
+            box-shadow: 8px 8px 0 #111 !important;
+            border-radius: 12px !important;
+            background-color: #FFFFFF !important;
+            padding: 25px !important;
             transform: translate(0, 0);
-            box-shadow: 2px 2px 0 black !important;
+            transition: all 0.15s ease-out;
+        }
+        .theme-retro-diner .card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0 #111 !important;
         }
         .theme-retro-diner .product-img-container {
-            border-bottom: 3px solid black !important;
-            margin: -20px -20px 20px -20px !important;
-            border-radius: var(--public-radius) var(--public-radius) 0 0 !important;
+            border-bottom: 3px solid #111 !important;
+            margin: -25px -25px 20px -25px !important;
+            border-radius: 9px 9px 0 0 !important;
+            height: 200px !important;
+        }
+        .theme-retro-diner h3 {
+            font-family: 'Rubik', var(--public-font);
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: #111;
+            text-transform: uppercase;
+        }
+        .theme-retro-diner .price-tag {
+            background: var(--public-primary);
+            color: #111 !important;
+            padding: 4px 10px;
+            border: 2px solid #111;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 1rem;
         }
         .theme-retro-diner .btn-standard {
-            border: 3px solid black !important;
+            background-color: #111 !important;
+            color: #FFF !important;
+            border: 3px solid #111 !important;
+            border-radius: 30px !important;
             font-weight: 900 !important;
-            box-shadow: 4px 4px 0 black !important;
             text-transform: uppercase;
+            box-shadow: 4px 4px 0 var(--public-primary) !important;
+            margin-top: 20px !important;
+            padding: 12px !important;
         }
         .theme-retro-diner .btn-standard:active {
             transform: translate(4px, 4px);
-            box-shadow: 0 0 0 black !important;
+            box-shadow: 0 0 0 var(--public-primary) !important;
         }
 
-        /* 2. NORDIC WHITE (Extreme Minimalism) */
+        /* 3. NORDIC WHITE (Extreme Scandinavian Minimalism) */
+        body.theme-nordic-white {
+            background-color: #FAFAFA;
+        }
         .theme-nordic-white .public-header {
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            background: transparent;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
         }
         .theme-nordic-white .grid {
-            gap: 60px !important;
+            gap: 70px !important;
+            padding: 40px 0;
         }
         .theme-nordic-white .card, .theme-nordic-white x-card {
             border: none !important;
@@ -144,130 +203,210 @@
             padding: 0 !important;
         }
         .theme-nordic-white .product-img-container {
-            border-radius: 20px !important;
-            height: 300px !important; /* Huge images */
-            margin: 0 0 20px 0 !important;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border-radius: 24px !important;
+            height: 320px !important; /* Huge gorgeous images */
+            margin: 0 0 25px 0 !important;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
         }
         .theme-nordic-white .card:hover .product-img-container {
-            transform: scale(1.02);
+            transform: scale(1.03);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
         }
         .theme-nordic-white h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #222;
             text-align: center;
-            letter-spacing: 2px;
+            letter-spacing: -0.5px;
+            margin-bottom: 5px !important;
         }
         .theme-nordic-white .price-tag {
             display: block;
             text-align: center;
             font-size: 1.1rem;
-            color: var(--color-text-mid) !important;
+            color: #888 !important;
+            font-weight: 400 !important;
+        }
+        .theme-nordic-white p {
+            text-align: center;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 15px !important;
+            font-size: 0.95rem;
         }
         .theme-nordic-white .btn-standard {
+            background-color: transparent !important;
+            border: 1px solid #DDD !important;
+            color: #222 !important;
             border-radius: 50px !important;
-            border: 1px solid var(--public-primary) !important;
-            color: var(--public-primary) !important;
+            padding: 12px 30px !important;
+            margin-top: 25px !important;
+            width: auto !important;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         .theme-nordic-white .btn-standard:hover {
-            background: var(--public-primary) !important;
-            color: white !important;
+            background-color: #222 !important;
+            color: #FFF !important;
+            border-color: #222 !important;
         }
 
-        /* 3. CYBERPUNK NIGHT (Neon & Glitch) */
+        /* 4. CYBERPUNK NIGHT (High-End Synthwave) */
         body.theme-cyberpunk-night {
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.15),
-                rgba(0, 0, 0, 0.15) 1px,
-                transparent 1px,
-                transparent 2px
-            ), var(--public-bg);
+            background-color: #050510;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: #E0E0E0;
         }
         .theme-cyberpunk-night .public-header {
-            border-bottom: 2px solid var(--public-primary);
-            box-shadow: 0 0 15px var(--public-primary);
+            background: rgba(5, 5, 16, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
         }
         .theme-cyberpunk-night .card, .theme-cyberpunk-night x-card {
-            border: 1px solid var(--public-primary) !important;
-            box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.2), 0 0 10px rgba(255, 0, 255, 0.2) !important;
-            background: rgba(10, 10, 10, 0.8) !important;
-            backdrop-filter: blur(5px);
+            background: rgba(15, 15, 25, 0.7) !important;
+            border: 1px solid rgba(0, 255, 255, 0.15) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+            border-radius: 0 !important; /* Sharp edges */
+            padding: 20px !important;
+            position: relative;
+            overflow: visible !important;
         }
-        .theme-cyberpunk-night .product-img-container {
-            filter: contrast(1.2) saturate(1.5);
-            border-bottom: 1px solid var(--public-primary) !important;
+        /* Cyberpunk Corner Accent */
+        .theme-cyberpunk-night .card::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px;
+            width: 15px; height: 15px;
+            border-top: 2px solid #00FFFF;
+            border-left: 2px solid #00FFFF;
+            box-shadow: -2px -2px 10px rgba(0,255,255,0.5);
+            z-index: 10;
         }
         .theme-cyberpunk-night .card:hover {
-            box-shadow: inset 0 0 20px var(--public-primary), 0 0 20px var(--public-primary) !important;
+            border-color: rgba(255, 0, 255, 0.5) !important;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.15) !important;
+        }
+        .theme-cyberpunk-night .product-img-container {
+            height: 200px !important;
+            margin: -20px -20px 20px -20px !important;
+            border-bottom: 1px solid rgba(255, 0, 255, 0.3) !important;
+            filter: contrast(1.1) saturate(1.2);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 95% 100%, 0 100%);
         }
         .theme-cyberpunk-night h3 {
-            text-shadow: 2px 2px 0px rgba(0,255,255,0.5);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: #FFF;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
         }
         .theme-cyberpunk-night .price-tag {
-            color: #00ffff !important;
-            text-shadow: 0 0 5px #00ffff;
+            color: #00FFFF !important;
+            font-family: monospace;
+            font-size: 1.1rem;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+        .theme-cyberpunk-night p {
+            color: #A0A0B0;
+            font-size: 0.85rem;
         }
         .theme-cyberpunk-night .btn-standard {
-            background: transparent !important;
-            color: var(--public-primary) !important;
-            border: 1px solid var(--public-primary) !important;
-            box-shadow: 0 0 5px var(--public-primary);
+            background: rgba(255, 0, 255, 0.1) !important;
+            color: #FF00FF !important;
+            border: 1px solid #FF00FF !important;
+            border-radius: 0 !important;
+            font-family: monospace;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s;
         }
         .theme-cyberpunk-night .btn-standard:hover {
-            background: var(--public-primary) !important;
-            color: black !important;
-            box-shadow: 0 0 15px var(--public-primary);
+            background: #FF00FF !important;
+            color: #000 !important;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5) !important;
         }
 
-        /* 4. MIDNIGHT EMERALD (Luxury Portrait) */
+        /* 5. MIDNIGHT EMERALD (Ultra-Luxury / Michelin Star) */
         body.theme-midnight-emerald {
-            background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" fill="none"/><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.03)"/></svg>');
+            background-color: #0B1612; /* Deep dark emerald */
         }
         .theme-midnight-emerald .public-header {
-            border-bottom: 1px solid rgba(192, 160, 128, 0.3); /* Gold border */
+            background-color: #08110D;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Subtle Gold */
+        }
+        .theme-midnight-emerald .public-header h1 {
+            color: #D4AF37 !important; /* Gold logo text */
+            font-family: 'Playfair Display', serif;
         }
         .theme-midnight-emerald .grid {
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important; /* Wider cards */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+            gap: 40px !important;
+            padding: 30px 0;
         }
         .theme-midnight-emerald .card, .theme-midnight-emerald x-card {
-            border: 1px solid rgba(192, 160, 128, 0.4) !important; /* Gold */
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5) !important;
+            background: #11201A !important; /* Slightly lighter emerald */
+            border: 1px solid rgba(212, 175, 55, 0.15) !important;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4) !important;
+            border-radius: 2px !important;
+            padding: 20px !important;
+            transition: all 0.4s ease;
+        }
+        .theme-midnight-emerald .card:hover {
+            border-color: rgba(212, 175, 55, 0.4) !important;
+            transform: translateY(-5px);
         }
         .theme-midnight-emerald .product-img-container {
-            height: 350px !important; /* Portrait mode images */
-            margin: -20px -20px 20px -20px !important;
-            border-bottom: 2px solid var(--public-primary) !important;
+            height: 340px !important; /* Portrait mode (elegant) */
+            margin: -20px -20px 25px -20px !important;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3) !important;
         }
         .theme-midnight-emerald h3 {
-            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #E8EBE9;
             text-align: center;
-            font-size: 1.5rem;
-            color: var(--public-primary) !important;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px !important;
         }
         .theme-midnight-emerald .price-tag {
             display: block;
             text-align: center;
-            font-size: 1.2rem;
-            margin-top: 5px;
+            font-size: 1.1rem;
+            color: #D4AF37 !important; /* Gold */
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
         .theme-midnight-emerald p {
             text-align: center;
-            opacity: 0.8;
+            color: #90A098;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-top: 15px !important;
         }
         .theme-midnight-emerald .btn-standard {
-            border: 1px solid var(--public-primary) !important;
-            color: var(--public-primary) !important;
+            background: transparent !important;
+            border: 1px solid rgba(212, 175, 55, 0.5) !important;
+            color: #D4AF37 !important;
             border-radius: 0 !important;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-size: 0.8rem !important;
+            padding: 12px !important;
+            margin-top: 20px !important;
+            transition: all 0.3s ease;
         }
         .theme-midnight-emerald .btn-standard:hover {
-            background: var(--public-primary) !important;
-            color: var(--public-header-bg) !important;
+            background: rgba(212, 175, 55, 0.1) !important;
+            border-color: #D4AF37 !important;
         }
     </style>
 </head>
