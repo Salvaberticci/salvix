@@ -28,7 +28,11 @@
                     @endif
                     
                     <ul style="margin:10px 0 0 0; padding-left:15px; font-size:0.9rem;">
-                        <!-- Assuming detalle relationship exists properly -->
+                        @foreach($pedido->detalle as $item)
+                            <li style="margin-bottom: 5px;">
+                                <strong>{{ $item->cantidad }}x</strong> {{ $item->producto->nombre ?? 'Producto Eliminado' }}
+                            </li>
+                        @endforeach
                     </ul>
                     
                     <hr style="margin: 10px 0; border:0; border-top:1px solid var(--color-border);"/>

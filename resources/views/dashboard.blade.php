@@ -75,10 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+            labels: {!! $labelsChart !!},
             datasets: [{
                 label: 'Ventas (USD)',
-                data: [120, 190, 150, 220, 300, 450, 400],
+                data: {!! $dataChart !!},
                 borderColor: '#E8A045',
                 backgroundColor: 'rgba(232, 160, 69, 0.1)',
                 borderWidth: 2,
