@@ -13,18 +13,28 @@
     </div>
 
     <!-- Categorías Tabs -->
-    <nav class="category-nav" style="margin-bottom: 40px; overflow-x:auto; white-space:nowrap; padding-bottom:10px;">
-        <ul style="list-style:none; padding:0; margin:0; display:flex; gap:15px;">
-            <li>
-                <a href="#" class="category-link" :class="{ 'active': activeCategory === 'all' }" @click.prevent="activeCategory = 'all'">Todo el Menú</a>
-            </li>
-            @foreach($categorias as $categoria)
-            <li>
-                <a href="#" class="category-link" :class="{ 'active': activeCategory === {{ $categoria->id }} }" @click.prevent="activeCategory = {{ $categoria->id }}">{{ $categoria->nombre }}</a>
-            </li>
-            @endforeach
-        </ul>
-    </nav>
+    <div style="position: relative; display: flex; align-items: center; margin-bottom: 40px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 5px;">
+        <button onclick="document.getElementById('cat-nav').scrollBy({left: -200, behavior: 'smooth'})" style="background:transparent; border:none; color:var(--color-muted); cursor:pointer; padding: 0 15px 0 0; display:flex; align-items:center;">
+            <i class="ph ph-caret-left" style="font-size: 1.2rem;"></i>
+        </button>
+        
+        <nav id="cat-nav" class="category-nav" style="flex: 1; overflow-x:auto; white-space:nowrap;">
+            <ul style="list-style:none; padding:0; margin:0; display:flex; gap:15px; align-items: center;">
+                <li>
+                    <a href="#" class="category-link" :class="{ 'active': activeCategory === 'all' }" @click.prevent="activeCategory = 'all'">Todo el Menú</a>
+                </li>
+                @foreach($categorias as $categoria)
+                <li>
+                    <a href="#" class="category-link" :class="{ 'active': activeCategory === {{ $categoria->id }} }" @click.prevent="activeCategory = {{ $categoria->id }}">{{ $categoria->nombre }}</a>
+                </li>
+                @endforeach
+            </ul>
+        </nav>
+
+        <button onclick="document.getElementById('cat-nav').scrollBy({left: 200, behavior: 'smooth'})" style="background:transparent; border:none; color:var(--color-muted); cursor:pointer; padding: 0 0 0 15px; display:flex; align-items:center;">
+            <i class="ph ph-caret-right" style="font-size: 1.2rem;"></i>
+        </button>
+    </div>
 
     <!-- Platos Grid -->
     <div class="product-grid">
