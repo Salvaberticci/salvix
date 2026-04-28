@@ -39,8 +39,16 @@ Integración nativa con **Google Gemini / OpenAI / Groq**. El sistema utiliza **
 - **Verificación Visual**: Los administradores pueden ver el capture de pantalla del pago y validar referencias antes de procesar el pedido.
 - **Flujo Automatizado**: Al confirmar un pago, el pedido se mueve instantáneamente a los monitores de cocina.
 
-### 📊 Dashboard de Gestión de Precisión
-Control total de métricas de ventas en USD y Bs, monitoreo de pedidos activos y gestión de inventario por ingredientes.
+### 🎨 Motor de Temas Dinámico (Theme Engine)
+- **Personalización Absoluta**: Gestión de variables CSS (colores, fuentes y bordes) directamente desde el panel de control, sin tocar una línea de código.
+- **Plantillas Predefinidas**: Incluye 5 estéticas de alta conversión (Ferrari Chiaroscuro, Emerald, Nordic, Retro y Cyberpunk).
+- **Branding**: Capacidad de subir logotipo personalizado o utilizar tipografía dinámica generada al vuelo.
+
+### 🍽️ Punto de Venta Interno (POS) & Operaciones
+- **POS Integrado**: Interfaz rápida y limpia para que meseros y cajeros tomen pedidos directamente en el local, asignándolos a mesas específicas.
+- **Kanban Operativo Mejorado**: Tablero de control en tiempo real para cocina con desglose detallado de platos, cantidades y diseño de alto contraste (Trello-style).
+- **Dashboard de Alto Rendimiento**: Métricas reales y gráficos dinámicos sincronizados con el flujo de ventas diarias de los últimos 7 días.
+- **Control de Inventario**: Gestión estricta de ingredientes, costos y niveles de alerta por merma o bajo stock.
 
 ---
 
