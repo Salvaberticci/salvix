@@ -9,7 +9,7 @@
         <div style="margin-bottom: 20px;">
             <label for="email" style="display: block; font-size: 0.9rem; margin-bottom: 5px; color: var(--color-border);">Correo Electrónico</label>
             <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" 
-                   style="width: 100%; padding: 10px; background: var(--color-black); border: 1px solid var(--color-border-dark); color: var(--color-white); border-radius: 2px;">
+                   style="width: 100%; padding: 10px; background: var(--color-surface); border: 1px solid var(--color-border-dark); color: var(--color-white); border-radius: 2px;">
             <x-input-error :messages="$errors->get('email')" style="color: var(--color-red); font-size: 0.8rem; margin-top: 5px;" />
         </div>
 
@@ -17,7 +17,7 @@
         <div style="margin-bottom: 20px;">
             <label for="password" style="display: block; font-size: 0.9rem; margin-bottom: 5px; color: var(--color-border);">Contraseña</label>
             <input id="password" type="password" name="password" required autocomplete="current-password" 
-                   style="width: 100%; padding: 10px; background: var(--color-black); border: 1px solid var(--color-border-dark); color: var(--color-white); border-radius: 2px;">
+                   style="width: 100%; padding: 10px; background: var(--color-surface); border: 1px solid var(--color-border-dark); color: var(--color-white); border-radius: 2px;">
             <x-input-error :messages="$errors->get('password')" style="color: var(--color-red); font-size: 0.8rem; margin-top: 5px;" />
         </div>
 
